@@ -25,7 +25,8 @@ db.connect(err => {
 
 app.post('/api/users', userController.addUser);
 app.get('/api/users', userController.getUsers);
-// app.delete('/api/users', userController.getUsers);
+app.put('/api/users/:id', userController.updateUser);
+app.delete('/api/users/:id', userController.deleteUser);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
