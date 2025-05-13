@@ -12,7 +12,7 @@ const addUser = (user, callback) => {
 };
 
 const getUsers = (callback) => {
-  const query = 'SELECT * FROM users';
+  const query = 'SELECT id, name, email, phone, created_at FROM users';
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error fetching data: ', err);
