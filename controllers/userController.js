@@ -23,4 +23,29 @@ const getUsers = (req, res) => {
   });
 };
 
-module.exports = { addUser, getUsers };
+const updateUser = (req, res) => {
+  const { id } = req.params;
+  const { name, email, phone } = req.body;
+
+  userModel.updateUser(id, {name, email, phone}, (err, result) => {
+    if (err) {
+      res.status(500).send('Error updating user');
+    } else {
+      res.status(200).send('User updated successfully');
+    }
+  });
+};
+
+const deleteUser = (req, res) => {
+  const { id } = req.params;
+
+  userModel.deleteUser(id, (err, result) => {
+    if (err) {
+      res.status(500).send('Error deleting user');
+    } else {
+      res.status(200).send('User deleted successfully');
+    }
+  });
+};
+
+module.exports = { addUser, getUsers, updateUser, deleteUser };
